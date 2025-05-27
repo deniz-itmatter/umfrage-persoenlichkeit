@@ -27,8 +27,7 @@ services:
       - POSTGRES_PASSWORD=survey_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    # Remove the ports section entirely
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U survey_user -d survey_db"]
       interval: 10s
