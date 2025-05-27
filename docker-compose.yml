@@ -3,8 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
-    ports:
-      - "5000:5000"
+    # Remove the ports section - Coolify will handle this
     environment:
       - FLASK_CONFIG=development
       - DATABASE_URL=postgresql://survey_user:survey_password@db:5432/survey_db
@@ -27,7 +26,7 @@ services:
       - POSTGRES_PASSWORD=survey_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    # Remove the ports section entirely
+    # No ports section needed
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U survey_user -d survey_db"]
       interval: 10s
